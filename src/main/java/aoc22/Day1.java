@@ -7,7 +7,6 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 
-
 public class Day1 {
 
     public static void main(String args[]) throws IOException {
@@ -22,6 +21,6 @@ public class Day1 {
 
         int first3 = listSorted[listSorted.length - 1] + listSorted[listSorted.length - 2] + listSorted[listSorted.length - 3];
         System.out.println(first3);
-        }
     }
+}
 

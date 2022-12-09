@@ -54,35 +54,37 @@ public class Day3 {
         return res;
     }
 
-    public int part2() throws IOException{
+    public int part2() throws IOException {
 
         int total = 0;
 
         List<String> input = loadFile("3.txt");
 
-       String[] lines = input.toArray(new String[0]);
-        for (int p=0;p<lines.length;p+=3) {
+        String[] lines = input.toArray(new String[0]);
+        for (int p = 0; p < lines.length; p += 3) {
             String lineOne = lines[p];
-            String lineTwo = lines[p+1];
-            String lineThree = lines[p+2];
+            String lineTwo = lines[p + 1];
+            String lineThree = lines[p + 2];
 
             String sameStr = "";
-            for(int i =0;i<lineOne.length();i++){
-                if (lineTwo.indexOf(lineOne.substring(i,i+1))!=-1 && lineThree.indexOf(lineOne.substring(i,i+1))!=-1){
-                    sameStr = lineOne.substring(i,i+1); break;
+            for (int i = 0; i < lineOne.length(); i++) {
+                if (lineTwo.indexOf(lineOne.substring(i, i + 1)) != -1 && lineThree.indexOf(lineOne.substring(i, i + 1)) != -1) {
+                    sameStr = lineOne.substring(i, i + 1);
+                    break;
                 }
             }
             int value;
             if (sameStr.toUpperCase().equals(sameStr))
-                value=sameStr.charAt(0) - 64 + 26;
+                value = sameStr.charAt(0) - 64 + 26;
             else
-                value=sameStr.charAt(0) - 96;
+                value = sameStr.charAt(0) - 96;
             total += value;
 
         }
         System.out.println(String.format("Total: %d", total));
-    return total;
+        return total;
     }
+
     public String getInput() {
         try {
             File f = new File("3.txt");

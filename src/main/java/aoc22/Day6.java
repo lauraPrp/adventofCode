@@ -4,20 +4,20 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class Day6  {
+public class Day6 {
 
-    List<String> input;
     public List<String> loadFile(String path) throws IOException {
         FileReader fileReader = new FileReader(path);
         return fileReader.readStrings();
     }
+
     public int findStartOfMessage(int lenMarker) throws IOException {
 
         List<String> input = loadFile("6.txt");
-         String datastream = input.get(0);
-         return IntStream.range(0, datastream.length() - 1)
-                 .filter(i -> datastream.substring(i, i + lenMarker).chars().distinct().count() == lenMarker)
-                 .findFirst()
+        String datastream = input.get(0);
+        return IntStream.range(0, datastream.length() - 1)
+                .filter(i -> datastream.substring(i, i + lenMarker).chars().distinct().count() == lenMarker)
+                .findFirst()
                 .getAsInt() + lenMarker;
 
     }
@@ -28,8 +28,8 @@ public class Day6  {
     }
 
 
-    public Integer getSecondStar() {
-        return null;
+    public Integer getSecondStar() throws IOException {
+        return findStartOfMessage(14);
     }
 
 }
