@@ -2,34 +2,37 @@ package aoc22;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.OptionalInt;
 
 public class Day6 {
-
-    public List<String> loadFile(String path) throws IOException {
-        FileReader fileReader = new FileReader(path);
+    private static List<String> loadFile(){
+        FileReader fileReader = new FileReader("6.txt");
         return fileReader.readStrings();
-    }
-
-    public int findStartOfMessage(int lenMarker) throws IOException {
-
-        List<String> input = loadFile("6.txt");
-        String datastream = input.get(0);
-        return IntStream.range(0, datastream.length() - 1)
-                .filter(i -> datastream.substring(i, i + lenMarker).chars().distinct().count() == lenMarker)
-                .findFirst()
-                .getAsInt() + lenMarker;
 
     }
 
+    public static int solve(int marker) throws IOException {
+        String s = loadFile().get(0);
 
-    public Integer getFirstStar() throws IOException {
-        return findStartOfMessage(4);
+        int bound = s.length() - 1;
+        for (int i = 0; i < bound; i++) {
+            if (s.substring(i, i + marker)
+                    .chars()
+                    .distinct().count() == marker) {
+                return OptionalInt.of(i).getAsInt() + marker;
+            }
+        }
+        return OptionalInt.empty().getAsInt() + marker;
+
     }
 
+    public static void main(String[] args) {
+        try {
+            System.out.println( "part 1 : "+ solve(4));
+            System.out.println( "part 2 : "+ solve(14));
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
 
-    public Integer getSecondStar() throws IOException {
-        return findStartOfMessage(14);
     }
-
 }
