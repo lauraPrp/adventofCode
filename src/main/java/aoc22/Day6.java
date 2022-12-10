@@ -7,8 +7,8 @@ import java.util.stream.IntStream;
 public class Day6 {
 
     public List<String> loadFile(String path) throws IOException {
-        FileReader fileReader = new FileReader(path);
-        return fileReader.readStrings();
+        InputLoader inputLoader = new InputLoader(path);
+        return inputLoader.readToStringList();
     }
 
     public int findStartOfMessage(int lenMarker) throws IOException {

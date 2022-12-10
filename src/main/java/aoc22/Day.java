@@ -10,8 +10,16 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public abstract class Day<Integer> {
+    public Day() {
 
-    public final List<String> input;
+    }
+
+    public static List<String> loadFile(String path) throws IOException {
+        InputLoader inputLoader = new InputLoader(path);
+        return inputLoader.readToStringList();
+    }
+
+    public List<String> input;
     public String day = "";
 
     public Day(Integer daynum) {
@@ -31,9 +39,9 @@ public abstract class Day<Integer> {
         return input;
     }
 
-    public abstract Integer getFirstStar();
+    public abstract Object getFirstStar();
 
-    public abstract Integer getSecondStar();
+    public abstract Object getSecondStar();
 
     public String getBothStarts() {
         return getFirstStar() + " " + getSecondStar();

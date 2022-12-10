@@ -7,17 +7,17 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 
-public class FileReader {
+public class InputLoader {
 
     String pathToFile;
 
-    public FileReader(String path) {
+    public InputLoader(String path) {
         pathToFile = path;
     }
 
-    public List<Integer> readInts() {
+    public List<Integer> readToListInts() {
 
-        List<Integer> measureCollection = new LinkedList<>();
+        List<Integer> integerList = new LinkedList<>();
 
         try {
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -29,7 +29,7 @@ public class FileReader {
 
             while (line != null) {
 
-                measureCollection.add(Integer.parseInt(line));
+                integerList.add(Integer.parseInt(line));
                 line = reader.readLine();
             }
 
@@ -38,12 +38,12 @@ public class FileReader {
             e.printStackTrace();
             return null;
         }
-        return measureCollection;
+        return integerList;
     }
 
-    public List<String> readStrings() {
+    public List<String> readToStringList() {
 
-        List<String> measureCollection = new LinkedList<>();
+        List<String> stringList = new LinkedList<>();
 
         try {
             BufferedReader reader = getReader();
@@ -52,7 +52,7 @@ public class FileReader {
 
             while (line != null) {
 
-                measureCollection.add(line);
+                stringList.add(line);
                 line = reader.readLine();
             }
 
@@ -61,7 +61,21 @@ public class FileReader {
             e.printStackTrace();
             return null;
         }
-        return measureCollection;
+        return stringList;
+    }
+
+    public String readSingleLine(){
+        String line = "";
+        try {
+            BufferedReader reader = getReader();
+            line = reader.readLine();
+
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return line;
     }
 
     private BufferedReader getReader() {

@@ -8,8 +8,8 @@ public class Day2 {
     static List<String> input;
 
     private static List<String> loadFile() throws IOException {
-        FileReader fileReader = new FileReader("2.txt");
-        return fileReader.readStrings();
+        InputLoader inputLoader = new InputLoader("2.txt");
+        return inputLoader.readToStringList();
 
     }
 
