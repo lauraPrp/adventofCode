@@ -1,14 +1,17 @@
 package aoc22;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalInt;
 
 public class Day6 {
-    private static List<String> loadFile(){
+    private static List<String> loadFile() throws FileNotFoundException {
         FileReader fileReader = new FileReader("6.txt");
-        return fileReader.readStrings();
-
+//        return fileReader.readStrings();
+        return new ArrayList<>();
     }
 
     public static int solve(int marker) throws IOException {
