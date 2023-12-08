@@ -8,7 +8,7 @@ public class Day2 {
     static List<String> input;
 
     private static List<String> loadFile() throws IOException {
-        InputLoader inputLoader = new InputLoader("2.txt");
+        InputLoader inputLoader = new InputLoader("2022/2.txt");
         return inputLoader.readToStringList();
 
     }

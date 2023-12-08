@@ -3,7 +3,7 @@ import java.io.*;
 //import aoc22.*;
 
 
-public class AdventOfCode2022 {
+public class AdventOfCode2023 {
 
     public static void main(String[] args) throws IOException {
 //        String dayInputFile = "";
