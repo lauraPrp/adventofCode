@@ -1,6 +1,5 @@
 package aoc22;
 
-import aoc22.Day3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,13 +20,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
     @Test
     void shouldReturnaListOfStringwithTheContentinTheTestFile() throws IOException {
-        fileContentasList = day3.loadFile("3test.txt");
+        fileContentasList = day3.loadFile("2022/3test.txt");
         assertTrue(fileContentasList.size() == 6);
     }
 
     @Test
     void shouldSplitEachStringInTwoEqualLenghtSegments() throws IOException {
-        fileContentasList = day3.loadFile("3test.txt");
+        fileContentasList = day3.loadFile("2022/3test.txt");
         int rows = fileContentasList.size();
         String[][] containers = new String[rows][2];
         containers = day3.splitString(fileContentasList);
@@ -43,7 +42,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
     @Test
      void shouldReturnDuplicatedLettersinBothContainers() throws IOException {
 
-        fileContentasList = day3.loadFile("3test.txt");
+        fileContentasList = day3.loadFile("2022/3test.txt");
         int rows = fileContentasList.size();
         String[][] containers = new String[rows][2];
         containers = day3.splitString(fileContentasList);
@@ -69,7 +68,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
  @Test
      void shouldReturnRealvalueFromRealInput() throws IOException {
-     fileContentasList = day3.loadFile("3.txt");
+     fileContentasList = day3.loadFile("2022/3.txt");
      int rows = fileContentasList.size();
      String[][] containers = new String[rows][2];
      containers = day3.splitString(fileContentasList);

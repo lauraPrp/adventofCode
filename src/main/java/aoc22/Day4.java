@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.util.List;
 
 public class Day4 {
-    public List<String> loadFile(String path) throws IOException {
+    public List<String> loadFile(String path) {
         InputLoader inputLoader = new InputLoader(path);
         return inputLoader.readToStringList();
     }
 
     public String solve() throws IOException {
-        List<String> input = loadFile("4.txt");
+        List<String> input = loadFile("2022/4.txt");
         int contains = 0;
         int overlap = 0;
         for (String s : input) {
@@ -34,7 +34,7 @@ public class Day4 {
         }
        System.out.println( contains);
         System.out.println( overlap);
-        return ""+contains+" "+overlap;
+        return contains+" "+overlap;
     }
 
 }
