@@ -1,4 +1,6 @@
-package aoc23;
+package aoc.aoc23;
+
+import aoc.base.DayBase;
 
 import java.io.*;
 import java.util.*;

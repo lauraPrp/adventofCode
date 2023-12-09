@@ -1,6 +1,4 @@
-package aoc23.day2;
-
-import aoc23.Game;
+package aoc.aoc23.day2;
 
 public class Day2 {
 

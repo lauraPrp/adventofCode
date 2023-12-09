@@ -1,7 +1,6 @@
-package aoc23.day2;
+package aoc.aoc23.day2;
 
-import aoc23.DayBase;
-import aoc23.Game;
+import aoc.base.DayBase;
 
 public class Day2Part2 {
     public static void main(String[] args) {

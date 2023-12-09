@@ -1,4 +1,6 @@
-package aoc23;
+package aoc.aoc23;
+
+import aoc.base.DayBase;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -6,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class Day4 extends DayBase{
+public class Day4 extends DayBase {
 
 
         public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package aoc23;
 
-import aoc23.day1.Day1;
+import aoc.aoc23.day1.Day1;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

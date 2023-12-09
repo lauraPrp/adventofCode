@@ -1,4 +1,4 @@
-package aoc23;
+package aoc.aoc23.day2;
 
 public class Game {
     int id;

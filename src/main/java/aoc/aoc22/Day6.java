@@ -1,4 +1,4 @@
-package aoc22;
+package aoc.aoc22;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

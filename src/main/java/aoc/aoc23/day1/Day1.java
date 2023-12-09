@@ -1,10 +1,12 @@
-package aoc23.day1;
+package aoc.aoc23.day1;
+
+import aoc.base.DayBase;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Day1 {
+public class Day1 extends DayBase {
     static File input = new File("src/main/resources/2023/d1_23input.txt");
 
     public static int sumFirstAndLastDigit() {
@@ -48,7 +50,8 @@ public class Day1 {
     }
 
     public static void main(String[] args) {
-        System.out.println(Day1.sumFirstAndLastDigit());
+        int res = Day1.sumFirstAndLastDigit();
+        formatOutput(""+res);
     }
 }
 

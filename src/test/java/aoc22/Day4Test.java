@@ -1,6 +1,6 @@
 package aoc22;
 
-import aoc22.Day4;
+import aoc.aoc22.Day4;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

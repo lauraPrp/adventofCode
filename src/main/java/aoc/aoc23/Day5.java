@@ -1,4 +1,4 @@
-package aoc23;
+package aoc.aoc23;
 
 import java.io.IOException;
 import java.nio.file.Files;

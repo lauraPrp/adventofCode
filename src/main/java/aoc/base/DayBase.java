@@ -1,4 +1,6 @@
-package aoc23;
+package aoc.base;
+
+import aoc.aoc22.InputLoader;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -20,7 +22,7 @@ public class DayBase {
         return null;
     }
 
-    static List<int[]> getInts(String filePath) throws IOException {
+    public static List<int[]> getInts(String filePath) throws IOException {
         List<int[]> list = new ArrayList<>();
         BufferedReader reader = null;
         try {
@@ -50,5 +52,9 @@ public class DayBase {
     public static void formatOutput(String result){
         final String ANSI_COLOUR_PURPLE = "\u001B[35m";
         System.out.print(ANSI_COLOUR_PURPLE  + result + "\n");
+    }
+    public static List<String> loadFile(String paz) throws IOException {
+        InputLoader inputLoader = new InputLoader(paz);
+        return inputLoader.readToStringList();
     }
 }

@@ -1,10 +1,8 @@
-package aoc22;
+package aoc.aoc22;
 
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
 
 public class Day7 {
     public static List<String> loadFile(String path) throws IOException {

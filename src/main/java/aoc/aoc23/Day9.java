@@ -1,4 +1,6 @@
-package aoc23;
+package aoc.aoc23;
+
+import aoc.base.DayBase;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,8 +24,8 @@ public class Day9 extends DayBase {
 //                System.out.println("Previous value: " + previousValue);
                 p2 = p2 + previousValue;
             }
-            formatOutput(String.valueOf("Part1: " + p1));
-            formatOutput(String.valueOf("Part2: " + p2));
+            formatOutput("Part1: " + p1);
+            formatOutput("Part2: " + p2);
         } catch (IOException e) {
             e.printStackTrace();
         }

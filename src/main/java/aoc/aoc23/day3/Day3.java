@@ -1,4 +1,4 @@
-package aoc23.day3;
+package aoc.aoc23.day3;
 
 import java.util.HashSet;
 import java.util.Set;

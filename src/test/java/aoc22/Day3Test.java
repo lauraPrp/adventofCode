@@ -1,5 +1,6 @@
 package aoc22;
 
+import aoc.aoc22.Day3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
