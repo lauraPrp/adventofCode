@@ -20,7 +20,7 @@ public class Day5 {
 
     public static void main(String[] args) throws IOException {
         List<String> fileContent = Files.readAllLines(Paths.get("src/main/resources/2023/d5_23input.txt"));
-        String[] parts = String.join("\n", fileContent).split("\n\n");
+        String[] parts = "\n\n".split(String.join("\n", fileContent));
 
         List<Long> seeds = Arrays.stream(parts[0].split("\\s+"))
                 .skip(1)
@@ -77,8 +77,7 @@ public class Day5 {
                             break;
                         }
                     } catch (NumberFormatException e) {
-                        // Handle or log the exception if needed
-                        continue;
+                        System.err.println("Number format Exception parsing "+ Arrays.toString(parts));
                     }
                 }
 

@@ -10,7 +10,6 @@ public class Day2 {
     private static List<String> loadFile() throws IOException {
         InputLoader inputLoader = new InputLoader("2022/2.txt");
         return inputLoader.readToStringList();
-
     }
 
     public static void main(String[] args) {
@@ -32,13 +31,13 @@ public class Day2 {
 
                     if (myPlay.equals("Y")) result1 += 8;
                     else if (myPlay.equals("X")) result1 += 4;
-                    else  result1 += 3; //Z
+                    else result1 += 3; //Z
 
 
                     //Part2
                     if (myPlay.equals("Y")) result2 += 4;
                     else if (myPlay.equals("X")) result2 += 3;
-                    else  result2 += 8; //Z
+                    else result2 += 8; //Z
 
                 }
 
@@ -46,7 +45,7 @@ public class Day2 {
 
                     if (myPlay.equals("Y")) result1 += 5;
                     else if (myPlay.equals("X")) result1 += 1;
-                    else  result1 += 9; //Z
+                    else result1 += 9; //Z
 
 
                     //Part 2
@@ -59,21 +58,22 @@ public class Day2 {
 
                     if (myPlay.equals("Y")) result1 += 2;
                     else if (myPlay.equals("X")) result1 += 7;
-                    else  result1 += 6;
+                    else result1 += 6;
 
 
                     //Part2
                     if (myPlay.equals("Y")) result2 += 6;
                     else if (myPlay.equals("X")) result2 += 2;
-                    else  result2 += 7;
+                    else result2 += 7;
 
                 }
+                default -> throw new IllegalStateException("Unexpected value of elfplay: " + elfPlay);
             }
         }
 
         System.out.println("First puzzle: " + result1);
 
-        System.out.println("2ND puzzle: " + result2);
+        System.out.println("Second puzzle: " + result2);
 
 
     }

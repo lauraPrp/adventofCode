@@ -9,7 +9,7 @@ public class LetterArray {
     //Attempt to solve day5 loading the input file in an Arraay
     public static void main(String[] args) {
 
-        String fileName = "src/main/resources/5test.txt";
+        String fileName = "src/main/resources/2022/5test.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             // Crea un array multidimensionale per contenere il contenuto del file
             char[][] letters = new char[12][12]; // 100 è una dimensione di esempio, potrebbe essere necessario modificarla

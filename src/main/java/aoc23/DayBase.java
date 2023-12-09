@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public sealed class DayBase permits Day4, Day9 {
+public class DayBase {
     public static String getInput(String filePath) {
         try {
             return Files.readString(Paths.get(filePath), StandardCharsets.UTF_8);
@@ -45,5 +45,10 @@ public sealed class DayBase permits Day4, Day9 {
             reader.close();
         }
         return null;
+    }
+
+    public static void formatOutput(String result){
+        final String ANSI_COLOUR_PURPLE = "\u001B[35m";
+        System.out.print(ANSI_COLOUR_PURPLE  + result + "\n");
     }
 }

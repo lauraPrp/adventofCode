@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public non-sealed class Day9 extends DayBase {
+public class Day9 extends DayBase {
 
     public static void main(String[] args) {
         int p1 = 0;
@@ -22,7 +22,8 @@ public non-sealed class Day9 extends DayBase {
 //                System.out.println("Previous value: " + previousValue);
                 p2 = p2 + previousValue;
             }
-            System.out.println("results p1 : " + p1 + " p2:" + p2);
+            formatOutput(String.valueOf("Part1: " + p1));
+            formatOutput(String.valueOf("Part2: " + p2));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -31,6 +32,7 @@ public non-sealed class Day9 extends DayBase {
     private static List<int[]> readSequencesFromFile(String filePath) throws IOException {
         return getInts(filePath);
     }
+
     private static int predictPreviousValue(int[] sequence) {
         List<int[]> differencesList = getInts(sequence);
 

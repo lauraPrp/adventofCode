@@ -2,16 +2,11 @@ package aoc23;
 
 import java.util.*;
 
-public class Day7 {
+public class Day7 extends DayBase {
     private static final String CARDS = "23456789TQKA";
 
     public static void main(String[] args) {
         String input = DayBase.getInput("src/main/resources/2023/d7_23input.txt");
-//                "32T3K 765\n" +
-//                "T55J5 684\n" +
-//                "KK677 28\n" +
-//                "KTJJT 220\n" +
-//                "QQQJA 483";
 
         List<HandBidPair> scored = new ArrayList<>();
         for (String line : input.split("\n")) {
@@ -26,7 +21,8 @@ public class Day7 {
             total += (scored.size() - i) * scored.get(i).bid;
         }
 
-        System.out.println(total);
+        formatOutput("tot: " + total);
+
     }
 
     private static int compareHands(String hand1, String hand2) {
@@ -65,7 +61,7 @@ public class Day7 {
 
         List<Integer> score = new ArrayList<>(counts.values());
         Collections.sort(score, Collections.reverseOrder());
-        List<Character> sortedHand = hand.chars().mapToObj(c -> (char)c)
+        List<Character> sortedHand = hand.chars().mapToObj(c -> (char) c)
                 .sorted((c1, c2) -> counts.get(c2).equals(counts.get(c1)) ?
                         Integer.compare(value(c2), value(c1)) : Integer.compare(counts.get(c2), counts.get(c1)))
                 .toList();

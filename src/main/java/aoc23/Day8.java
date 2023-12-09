@@ -1,15 +1,16 @@
 package aoc23;
 
 import java.io.*;
-import java.nio.file.*;
 import java.util.*;
 
-public class Day8 {
+public class Day8 extends DayBase {
 
     public static void main(String[] args) throws IOException {
         String filePath = "src/main/resources/2023/d8_23input.txt";
-        String D = Files.readString(Path.of(filePath)).trim();
-        String[] parts = D.split("\n\n");
+        String input = getInput(filePath);
+
+
+        String[] parts = input.split("\n\n");
         String steps = parts[0];
         String[] rules = parts[1].split("\n");
 
@@ -23,16 +24,17 @@ public class Day8 {
             leftMap.put(st, lr[0].trim().substring(1).trim());
             rightMap.put(st, lr[1].trim().substring(0, lr[1].trim().length() - 1).trim());
         }
-
-        System.out.println(solve(steps, leftMap, rightMap, false));
-        System.out.println(solve(steps, leftMap, rightMap, true));
+        long p1 = solve(steps, leftMap, rightMap, false);
+        long p2 = solve(steps, leftMap, rightMap, true);
+        formatOutput("Part1: " + p1);
+        formatOutput("Part2: " + p2);
     }
 
-    private static long lcm(long a, long b) {
-        return a / gcd(a, b) * b;
+    private static long calculateLeastComuneMultiple(long a, long b) {
+        return a / calculateGreatestCommonDivisor(a, b) * b;
     }
 
-    private static long gcd(long a, long b) {
+    private static long calculateGreatestCommonDivisor(long a, long b) {
         while (b != 0) {
             long temp = b;
             b = a % b;
@@ -41,86 +43,30 @@ public class Day8 {
         return a;
     }
     private static long solve(String steps, Map<String, String> leftMap, Map<String, String> rightMap, boolean part2) {
-        List<String> POS = new ArrayList<>();
+        List<String> position = new ArrayList<>(leftMap.keySet().stream()
+                .filter(key -> (part2 && key.endsWith("A")) || (!part2 && key.endsWith("AAA")))
+                .toList());
 
-        // Loop through each key in the leftMap
-        for (String key : leftMap.keySet()) {
-            // Check condition based on the part2 flag and add to POS list if condition is met
-            if ((part2 && key.endsWith("A")) || (!part2 && key.endsWith("AAA"))) {
-                POS.add(key);
-            }
-        }
-
-        // Initialize a map to track the times
-        Map<Integer, Long> T = new HashMap<>();
+        Map<Integer, Long> track = new HashMap<>();
         long t = 0;
+        int stepsLength = steps.length(); // Pre-calculate the length of the steps string
 
-        // Infinite loop to find the solution
         while (true) {
-            // Create a new list to store the next positions
-            List<String> NP = new ArrayList<>();
+            for (int i = 0; i < position.size(); i++) {
+                String currentPos = position.get(i);
+                String nextPos = steps.charAt((int) (t % stepsLength)) == 'L' ? leftMap.get(currentPos) : rightMap.get(currentPos);
 
-            // Iterate over the current positions
-            for (int i = 0; i < POS.size(); i++) {
-                String currentPos = POS.get(i);
-
-                // Determine the next position based on the current step
-                String nextPos;
-                if (steps.charAt((int) (t % steps.length())) == 'L') {
-                    nextPos = leftMap.get(currentPos);
-                } else {
-                    nextPos = rightMap.get(currentPos);
-                }
-
-                // Check if the next position ends with 'Z'
                 if (nextPos.endsWith("Z")) {
-                    // Update the time map
-                    T.put(i, t + 1);
-
-                    // Check if all positions are accounted for
-                    if (T.size() == POS.size()) {
-                        // Calculate and return the least common multiple of the times
-                        long lcmValue = 1;
-                        for (long time : T.values()) {
-                            lcmValue = lcm(lcmValue, time);
-                        }
-                        return lcmValue;
+                    track.put(i, t + 1);
+                    if (track.size() == position.size()) {
+                        return track.values().stream().reduce(1L, Day8::calculateLeastComuneMultiple); // Calculate LCM using Stream API
                     }
                 }
 
-                // Add the next position to the NP list
-                NP.add(nextPos);
+                position.set(i, nextPos); // Update in place
             }
-
-            // Update the current positions with the next positions
-            POS = NP;
-            // Increment the time
             t++;
         }
     }
-
-
-//    private static long solve(String steps, Map<String, String> leftMap, Map<String, String> rightMap, boolean part2) {
-//        List<String> POS = leftMap.keySet().stream()
-//                .filter(s -> s.endsWith(part2 ? "A" : "AAA"))
-//                .toList();
-//        Map<Integer, Long> T = new HashMap<>();
-//        long t = 0;
-//        while (true) {
-//            List<String> NP = new ArrayList<>();
-//            for (int i = 0; i < POS.size(); i++) {
-//                String p = (steps.charAt((int) (t % steps.length())) == 'L' ? leftMap : rightMap).get(POS.get(i));
-//                if (p.endsWith("Z")) {
-//                    T.put(i, t + 1);
-//                    if (T.size() == POS.size()) {
-//                        return T.values().stream().reduce(1L, Day8::lcm);
-//                    }
-//                }
-//                NP.add(p);
-//            }
-//            POS = NP;
-//            t++;
-//        }
-//    }
 }
 

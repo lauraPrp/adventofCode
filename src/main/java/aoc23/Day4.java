@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Stream;
 
-public non-sealed class Day4 extends DayBase{
+public class Day4 extends DayBase{
 
 
         public static void main(String[] args) {
