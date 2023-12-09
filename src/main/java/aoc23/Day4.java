@@ -4,26 +4,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Day4 extends DayBase{
-        public static int[][] readCardsFromFile(String filename) throws IOException {
-            try (Stream<String> lines = Files.lines(Paths.get(filename))) {
-                List<int[]> cardsList = lines
-                        .filter(line -> line.contains(":") && line.contains("|"))
-                        .map(line -> {
-                            String[] parts = line.split("\\|");
-                            String[] winningNumbers = parts[0].substring(parts[0].indexOf(':') + 1).trim().split("\\s+");
-                            String[] playerNumbers = parts[1].trim().split("\\s+");
-                            return Stream.concat(Arrays.stream(winningNumbers), Arrays.stream(playerNumbers))
-                                    .mapToInt(Integer::parseInt)
-                                    .toArray();
-                        })
-                        .collect(Collectors.toList());
-                return cardsList.toArray(new int[0][]);
-            }
-        }
+public non-sealed class Day4 extends DayBase{
+
 
         public static void main(String[] args) {
             try {
@@ -38,6 +22,22 @@ public class Day4 extends DayBase{
             }
         }
 
+    public static int[][] readCardsFromFile(String filename) throws IOException {
+        try (Stream<String> lines = Files.lines(Paths.get(filename))) {
+            List<int[]> cardsList = lines
+                    .filter(line -> line.contains(":") && line.contains("|"))
+                    .map(line -> {
+                        String[] parts = line.split("\\|");
+                        String[] winningNumbers = parts[0].substring(parts[0].indexOf(':') + 1).trim().split("\\s+");
+                        String[] playerNumbers = parts[1].trim().split("\\s+");
+                        return Stream.concat(Arrays.stream(winningNumbers), Arrays.stream(playerNumbers))
+                                .mapToInt(Integer::parseInt)
+                                .toArray();
+                    })
+                    .toList();
+            return cardsList.toArray(new int[0][]);
+        }
+    }
 
         private static int calculatePoints(int[] card) {
             Set<Integer> winningNumbers = new HashSet<>();
